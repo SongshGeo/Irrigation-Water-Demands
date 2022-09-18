@@ -1,19 +1,27 @@
-import imp
-import logging
 import math
-import os
-from asyncio.constants import SSL_HANDSHAKE_TIMEOUT
-from ipaddress import v4_int_to_packed
-from pydoc import plain
-from turtle import width
 
-import matplotlib.pyplot as plt
-import numpy as np
+CONSTANT = 273.3  # TODO 这里类似，常量要以这样的形式输入函数。
 
 
 def calculate_drought_index(temp, shum, pres, srad, lrad, wind, prec, G=0):
-    VPD_0 = 0.6108 * (math.e ** ((17.27 * temp) / (temp + 237.3)))
-    delta = (4098 * VPD_0) / ((temp + 237.3) * (temp + 237.3))
+    """
+    _summary_
+
+    Args:
+        temp (_type_): _description_
+        shum (_type_): _description_
+        pres (_type_): _description_
+        srad (_type_): _description_
+        lrad (_type_): _description_
+        wind (_type_): _description_
+        prec (_type_): _description_
+        G (int, optional): _description_. Defaults to 0.
+
+    Returns:
+        _type_: _description_
+    """
+    VPD_0 = 0.6108 * (math.e ** ((17.27 * temp) / (temp + CONSTANT)))
+    delta = (4098 * VPD_0) / ((temp + CONSTANT) * (temp + CONSTANT))
     VPD = VPD_0 * (1 - shum)
     r = 0.665 * 0.001 * pres
     R_n = srad - lrad

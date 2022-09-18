@@ -133,3 +133,6 @@ dmypy.json
 analysis/notebooks/ap_output/
 analysis/notebooks/.ipynb_checkpoints/
 docs/site
+# Mac OS files
+__MACOSX
+tmp
